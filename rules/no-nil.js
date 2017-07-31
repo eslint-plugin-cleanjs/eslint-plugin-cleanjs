@@ -34,7 +34,9 @@ function reportFunctions(context, node) {
 }
 
 const create = function (context) {
-  const reportFunc = _.partial(reportFunctions, [context]);
+  const options = context.options[0] || {explicitReturn: true};
+  const explicitReturn = options.explicitReturn === true;
+  const reportFunc = explicitReturn ? _.partial(reportFunctions, [context]) : () => {};
   return {
     Literal(node) {
       if (node.value === null) {
@@ -74,6 +76,15 @@ module.exports = {
     docs: {
       description: 'Forbid the use of `null` and `undefined`.',
       recommended: 'error'
-    }
+    },
+    schema: [{
+      type: 'object',
+      properties: {
+        explicitReturn: {
+          type: 'boolean'
+        }
+      },
+      additionalProperties: false
+    }]
   }
 };
