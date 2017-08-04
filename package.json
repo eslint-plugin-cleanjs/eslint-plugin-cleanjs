@@ -43,7 +43,8 @@
     "create-eslint-index": "^1.0.0",
     "eslint-ast-utils": "^1.0.0",
     "lodash": "^4.13.1",
-    "req-all": "^0.1.0"
+    "req-all": "^0.1.0",
+    "lodash.upperfirst": "^4.3.1"
   },
   "devDependencies": {
     "ava": "^0.17.0",
