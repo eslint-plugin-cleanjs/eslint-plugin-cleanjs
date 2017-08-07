@@ -5,8 +5,8 @@ module.exports = function (context) {
   }
   function exitFunction(node) {
     return functions[functions.length - 1] === node ?
-			context.report(node, 'Does not have explicit return value') :
-			undefined;
+      context.report(node, 'Does not have explicit return value') :
+      undefined;
   }
 
   return {
@@ -14,8 +14,8 @@ module.exports = function (context) {
     FunctionExpression: enterFunction,
     ArrowFunctionExpression(node) {
       return node.body.type === 'BlockStatement' ?
-				enterFunction(node) :
-				null;
+        enterFunction(node) :
+        null;
     },
 
     'FunctionDeclaration:exit': exitFunction,
