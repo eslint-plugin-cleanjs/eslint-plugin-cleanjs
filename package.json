@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-cleanjs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "ESLint rules for functional programming",
   "license": "MIT",
   "repository": "eslint-plugin-cleanjs/eslint-plugin-cleanjs",
