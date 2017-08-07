@@ -1,9 +1,9 @@
 {
-  "name": "eslint-plugin-fp",
-  "version": "2.3.0",
+  "name": "eslint-plugin-cleanjs",
+  "version": "0.0.0",
   "description": "ESLint rules for functional programming",
   "license": "MIT",
-  "repository": "jfmengels/eslint-plugin-fp",
+  "repository": "eslint-plugin-cleanjs/eslint-plugin-cleanjs",
   "author": {
     "name": "Jeroen Engels",
     "email": "jfm.engels@gmail.com",

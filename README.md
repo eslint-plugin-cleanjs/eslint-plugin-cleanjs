@@ -1,4 +1,4 @@
-# eslint-plugin-fp [![Build Status](https://travis-ci.org/jfmengels/eslint-plugin-fp.svg?branch=master)](https://travis-ci.org/jfmengels/eslint-plugin-fp)
+# eslint-plugin-cleanjs [![Build Status](https://travis-ci.org/eslint-plugin-cleanjs/eslint-plugin-cleanjs.svg?branch=master)](https://travis-ci.org/eslint-plugin-cleanjs/eslint-plugin-cleanjs)
 
 ESLint rules for functional programming
 
@@ -6,7 +6,7 @@ ESLint rules for functional programming
 ## Install
 
 ```
-$ npm install --save-dev eslint eslint-plugin-fp
+$ npm install --save-dev eslint eslint-plugin-cleanjs
 ```
 
 ## Usage
@@ -22,41 +22,41 @@ Configure it in `package.json`.
       "es6": true
     },
     "plugins": [
-      "fp"
+      "cleanjs"
     ],
     "rules": {
-      "fp/explicit-return": "off",
-      "fp/must-return": "off",
-      "fp/no-arguments": "error",
-      "fp/no-class": "error",
-      "fp/no-delete": "error",
-      "fp/no-events": "error",
-      "fp/no-exceptions": "off",
-      "fp/no-exports": "off",
-      "fp/no-function-expressions": "off",
-      "fp/no-get-set": "error",
-      "fp/no-ifs": "off",
-      "fp/no-imports": "off",
-      "fp/no-instanceofs": "off",
-      "fp/no-let": "error",
-      "fp/no-loops": "error",
-      "fp/no-mutating-assign": "error",
-      "fp/no-mutating-methods": "error",
-      "fp/no-mutation": "error",
-      "fp/no-new": "off",
-      "fp/no-nil": "error",
-      "fp/no-nulls": "off",
-      "fp/no-proxy": "error",
-      "fp/no-reassigns": "off",
-      "fp/no-rest-parameters": "error",
-      "fp/no-switches": "off",
-      "fp/no-this": "error",
-      "fp/no-throw": "error",
-      "fp/no-typeofs": "off",
-      "fp/no-undefined": "off",
-      "fp/no-unused-expression": "error",
-      "fp/no-valueof-field": "error",
-      "fp/no-variable-declarations": "off",
+      "cleanjs/explicit-return": "off",
+      "cleanjs/must-return": "off",
+      "cleanjs/no-arguments": "error",
+      "cleanjs/no-class": "error",
+      "cleanjs/no-delete": "error",
+      "cleanjs/no-events": "error",
+      "cleanjs/no-exceptions": "off",
+      "cleanjs/no-exports": "off",
+      "cleanjs/no-function-expressions": "off",
+      "cleanjs/no-get-set": "error",
+      "cleanjs/no-ifs": "off",
+      "cleanjs/no-imports": "off",
+      "cleanjs/no-instanceofs": "off",
+      "cleanjs/no-let": "error",
+      "cleanjs/no-loops": "error",
+      "cleanjs/no-mutating-assign": "error",
+      "cleanjs/no-mutating-methods": "error",
+      "cleanjs/no-mutation": "error",
+      "cleanjs/no-new": "off",
+      "cleanjs/no-nil": "error",
+      "cleanjs/no-nulls": "off",
+      "cleanjs/no-proxy": "error",
+      "cleanjs/no-reassigns": "off",
+      "cleanjs/no-rest-parameters": "error",
+      "cleanjs/no-switches": "off",
+      "cleanjs/no-this": "error",
+      "cleanjs/no-throw": "error",
+      "cleanjs/no-typeofs": "off",
+      "cleanjs/no-undefined": "off",
+      "cleanjs/no-unused-expression": "error",
+      "cleanjs/no-valueof-field": "error",
+      "cleanjs/no-variable-declarations": "off",
       "no-var": "error"
     }
   }
@@ -114,9 +114,9 @@ To enable this configuration, use the `extends` property in your `package.json`.
   "name": "my-awesome-project",
   "eslintConfig": {
     "plugins": [
-      "fp"
+      "cleanjs"
     ],
-    "extends": "plugin:fp/recommended"
+    "extends": "plugin:cleanjs/recommended"
   }
 }
 ```

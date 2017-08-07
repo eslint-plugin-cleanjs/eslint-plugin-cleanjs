@@ -18,7 +18,7 @@ const exampleConfiguration = {
       es6: true
     },
     plugins: [
-      'fp'
+      'cleanjs'
     ],
     rules: index.configs.recommended.rules
   }

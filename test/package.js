@@ -15,7 +15,7 @@ test('every rule should defined in the index file and recommended settings', asy
     t.truthy(rule, `'${name}' is not exported in 'index.js'`);
     t.truthy(docs.description, `'${name}' does not have a description`);
     t.truthy(docs.recommended, `'${name}' does not have a recommended setting`);
-    t.truthy(index.configs.recommended.rules[`fp/${name}`], `'${name}' is not set in the recommended config`);
+    t.truthy(index.configs.recommended.rules[`cleanjs/${name}`], `'${name}' is not set in the recommended config`);
   });
 
   t.is(Object.keys(index.rules).length, rules.length,
