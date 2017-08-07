@@ -1,9 +1,9 @@
-module.exports = function(context) {
-	return {
-		'UnaryExpression': function(node) {
-			return node.operator === 'delete' ?
+module.exports = function (context) {
+  return {
+    UnaryExpression(node) {
+      return node.operator === 'delete' ?
 				context.report(node, 'Unexpected delete operator') :
 				undefined;
-		}
-	};
+    }
+  };
 };

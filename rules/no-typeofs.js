@@ -1,9 +1,9 @@
-module.exports = function(context) {
-	return {
-		'UnaryExpression': function(node) {
-			return node.operator === 'typeof' ?
+module.exports = function (context) {
+  return {
+    UnaryExpression(node) {
+      return node.operator === 'typeof' ?
 				context.report(node, 'Unexpected typeof operator') :
 				undefined;
-		}
-	};
+    }
+  };
 };

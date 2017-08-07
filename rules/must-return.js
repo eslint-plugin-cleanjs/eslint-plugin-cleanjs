@@ -11,10 +11,10 @@
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -23,15 +23,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-"use strict";
+'use strict';
 
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
 
-const upperFirst = require("lodash.upperfirst");
+const upperFirst = require('lodash.upperfirst');
 
-const astUtils = require("eslint/lib/ast-utils");
+const astUtils = require('eslint/lib/ast-utils');
 
 //------------------------------------------------------------------------------
 // Helpers
@@ -44,7 +44,7 @@ const astUtils = require("eslint/lib/ast-utils");
  * @returns {boolean} `true` if the node is an `Identifier` node which was named as expected.
  */
 function isIdentifier(node, name) {
-    return node.type === "Identifier" && node.name === name;
+  return node.type === 'Identifier' && node.name === name;
 }
 
 /**
@@ -53,7 +53,7 @@ function isIdentifier(node, name) {
  * @returns {boolean} `true` if the segment is unreachable.
  */
 function isUnreachable(segment) {
-    return !segment.reachable;
+  return !segment.reachable;
 }
 
 /**
@@ -62,26 +62,26 @@ function isUnreachable(segment) {
 * @returns {boolean} `true` if the node is a `constructor` method
 */
 function isClassConstructor(node) {
-    return node.type === "FunctionExpression" &&
+  return node.type === 'FunctionExpression' &&
         node.parent &&
-        node.parent.type === "MethodDefinition" &&
-        node.parent.kind === "constructor";
+        node.parent.type === 'MethodDefinition' &&
+        node.parent.kind === 'constructor';
 }
 
 function isSimpleArrow(node) {
-    return (
-      node.type === "ArrowFunctionExpression" &&
-      node.body.type !== "BlockStatement"
-    );
+  return (
+      node.type === 'ArrowFunctionExpression' &&
+      node.body.type !== 'BlockStatement'
+  );
 }
 
 //------------------------------------------------------------------------------
 // Rule Definition
 //------------------------------------------------------------------------------
 
-module.exports = function(context) {
-    const treatUndefinedAsUnspecified = false;
-    let funcInfo = null;
+module.exports = function (context) {
+  const treatUndefinedAsUnspecified = false;
+  let funcInfo = null;
 
     /**
     * Checks whether of not the implicit returning is consistent if the last
@@ -90,103 +90,99 @@ module.exports = function(context) {
     * @param {ASTNode} node - A program/function node to check.
     * @returns {void}
     */
-    function checkLastSegment(node) {
-      let loc, name;
+  function checkLastSegment(node) {
+    let loc, name;
 
       /*
        * Skip if it expected no return value or unreachable.
        * When unreachable, all paths are returned or thrown.
        */
-      if (funcInfo.codePath.currentSegments.every(isUnreachable) ||
+    if (funcInfo.codePath.currentSegments.every(isUnreachable) ||
           isSimpleArrow(node) ||
           isClassConstructor(node)
       ) {
-          return;
-      }
-
-      // Adjust a location and a message.
-      if (node.type === "Program") {
-
-          // The head of program.
-          loc = { line: 1, column: 0 };
-          name = "program";
-      } else if (node.type === "ArrowFunctionExpression") {
-
-          // `=>` token
-          loc = context.getSourceCode().getTokenBefore(node.body, astUtils.isArrowToken).loc.start;
-      } else if (
-          node.parent.type === "MethodDefinition" ||
-          (node.parent.type === "Property" && node.parent.method)
-      ) {
-
-          // Method name.
-          loc = node.parent.key.loc.start;
-      } else {
-
-          // Function name or `function` keyword.
-          loc = (node.id || node).loc.start;
-      }
-
-      if (!name) {
-          name = astUtils.getFunctionNameWithKind(node);
-      }
-
-      // Reports.
-      context.report({
-          node,
-          loc,
-          message: "Expected to return a value at the end of {{name}}.",
-          data: { name }
-      });
+      return;
     }
 
-    return {
+      // Adjust a location and a message.
+    if (node.type === 'Program') {
+          // The head of program.
+      loc = {line: 1, column: 0};
+      name = 'program';
+    } else if (node.type === 'ArrowFunctionExpression') {
+          // `=>` token
+      loc = context.getSourceCode().getTokenBefore(node.body, astUtils.isArrowToken).loc.start;
+    } else if (
+          node.parent.type === 'MethodDefinition' ||
+          (node.parent.type === 'Property' && node.parent.method)
+      ) {
+          // Method name.
+      loc = node.parent.key.loc.start;
+    } else {
+          // Function name or `function` keyword.
+      loc = (node.id || node).loc.start;
+    }
+
+    if (!name) {
+      name = astUtils.getFunctionNameWithKind(node);
+    }
+
+      // Reports.
+    context.report({
+      node,
+      loc,
+      message: 'Expected to return a value at the end of {{name}}.',
+      data: {name}
+    });
+  }
+
+  return {
 
       // Initializes/Disposes state of each code path.
-      onCodePathStart(codePath, node) {
-          funcInfo = {
-              upper: funcInfo,
-              codePath,
-              hasReturn: false,
-              hasReturnValue: false,
-              message: "",
-              node
-          };
-      },
-      onCodePathEnd() {
-          funcInfo = funcInfo.upper;
-      },
+    onCodePathStart(codePath, node) {
+      funcInfo = {
+        upper: funcInfo,
+        codePath,
+        hasReturn: false,
+        hasReturnValue: false,
+        message: '',
+        node
+      };
+    },
+    onCodePathEnd() {
+      funcInfo = funcInfo.upper;
+    },
 
       // Reports a given return statement if it's inconsistent.
-      ReturnStatement(node) {
-          const argument = node.argument;
-          let hasReturnValue = Boolean(argument);
+    ReturnStatement(node) {
+      const argument = node.argument;
+      let hasReturnValue = Boolean(argument);
 
-          if (treatUndefinedAsUnspecified && hasReturnValue) {
-              hasReturnValue = !isIdentifier(argument, "undefined") && argument.operator !== "void";
-          }
+      if (treatUndefinedAsUnspecified && hasReturnValue) {
+        hasReturnValue = !isIdentifier(argument, 'undefined') && argument.operator !== 'void';
+      }
 
-          if (!funcInfo.hasReturn) {
-              funcInfo.hasReturn = true;
-              funcInfo.hasReturnValue = hasReturnValue;
-              funcInfo.message = "{{name}} expected {{which}} return value.";
-              funcInfo.data = {
-                  name: funcInfo.node.type === "Program"
-                      ? "Program"
-                      : upperFirst(astUtils.getFunctionNameWithKind(funcInfo.node)),
-                  which: hasReturnValue ? "a" : "no"
-              };
-          } else if (funcInfo.hasReturnValue !== hasReturnValue) {
-              context.report({
-                  node,
-                  message: funcInfo.message,
-                  data: funcInfo.data
-              });
-          }
-      },
+      if (!funcInfo.hasReturn) {
+        funcInfo.hasReturn = true;
+        funcInfo.hasReturnValue = hasReturnValue;
+        funcInfo.message = '{{name}} expected {{which}} return value.';
+        funcInfo.data = {
+          name: funcInfo.node.type === 'Program' ?
+                      'Program' :
+                      upperFirst(astUtils.getFunctionNameWithKind(funcInfo.node)),
+          which: hasReturnValue ? 'a' : 'no'
+        };
+      } else if (funcInfo.hasReturnValue !== hasReturnValue) {
+        context.report({
+          node,
+          message: funcInfo.message,
+          data: funcInfo.data
+        });
+      }
+    },
 
-      "FunctionDeclaration:exit": checkLastSegment,
-      "FunctionExpression:exit": checkLastSegment,
-      "ArrowFunctionExpression:exit": checkLastSegment
-    };
+    'FunctionDeclaration:exit': checkLastSegment,
+    'FunctionExpression:exit': checkLastSegment,
+    'ArrowFunctionExpression:exit': checkLastSegment
+  };
 };
