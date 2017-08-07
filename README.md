@@ -26,7 +26,7 @@ Configure it in `package.json`.
     ],
     "rules": {
       "cleanjs/explicit-return": "off",
-      "cleanjs/must-return": "off",
+      "cleanjs/must-return": "error",
       "cleanjs/no-arguments": "error",
       "cleanjs/no-class": "error",
       "cleanjs/no-delete": "error",
@@ -35,16 +35,21 @@ Configure it in `package.json`.
       "cleanjs/no-exports": "off",
       "cleanjs/no-function-expressions": "off",
       "cleanjs/no-get-set": "error",
-      "cleanjs/no-ifs": "off",
+      "cleanjs/no-ifs": "error",
       "cleanjs/no-imports": "off",
-      "cleanjs/no-instanceofs": "off",
+      "cleanjs/no-instanceofs": "error",
       "cleanjs/no-let": "error",
       "cleanjs/no-loops": "error",
       "cleanjs/no-mutating-assign": "error",
       "cleanjs/no-mutating-methods": "error",
       "cleanjs/no-mutation": "error",
-      "cleanjs/no-new": "off",
-      "cleanjs/no-nil": "error",
+      "cleanjs/no-new": "error",
+      "cleanjs/no-nil": [
+        "error",
+        {
+          "explicitReturn": false
+        }
+      ],
       "cleanjs/no-nulls": "off",
       "cleanjs/no-proxy": "error",
       "cleanjs/no-reassigns": "off",
@@ -57,7 +62,8 @@ Configure it in `package.json`.
       "cleanjs/no-unused-expression": "error",
       "cleanjs/no-valueof-field": "error",
       "cleanjs/no-variable-declarations": "off",
-      "no-var": "error"
+      "no-var": "error",
+      "prefer-spread": "error"
     }
   }
 }

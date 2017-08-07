@@ -11,7 +11,7 @@ module.exports = {
   meta: {
     docs: {
       description: 'Forbids the use of `if` statements, in favour of ternary expressions',
-      recommended: 'off'
+      recommended: 'error'
     }
   }
 };

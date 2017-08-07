@@ -11,7 +11,7 @@ module.exports = {
   meta: {
     docs: {
       description: 'Forbids the use of the `new` keyword',
-      recommended: 'off'
+      recommended: 'error'
     }
   }
 };

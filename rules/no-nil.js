@@ -75,7 +75,7 @@ module.exports = {
   meta: {
     docs: {
       description: 'Forbid the use of `null` and `undefined`.',
-      recommended: 'error'
+      recommended: ['error', {explicitReturn: false}]
     },
     schema: [{
       type: 'object',

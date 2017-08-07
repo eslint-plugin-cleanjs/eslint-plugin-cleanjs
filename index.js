@@ -6,7 +6,8 @@ const createIndex = require('create-eslint-index');
 const rules = importModules('rules', {camelize: false});
 
 const externalRecommendedRules = {
-  'no-var': 'error'
+  'no-var': 'error',
+  'prefer-spread': 'error'
 };
 
 const internalRecommendedRules = createIndex.createConfig({

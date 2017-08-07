@@ -193,7 +193,7 @@ module.exports = {
   meta: {
     docs: {
       description: 'Every branch of every function should have a return statement.',
-      recommended: 'off'
+      recommended: 'error'
     }
   }
 };

@@ -13,7 +13,7 @@ module.exports = {
   meta: {
     docs: {
       description: 'Forbids the use of the `instanceof` operator',
-      recommended: 'off'
+      recommended: 'error'
     }
   }
 };

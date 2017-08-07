@@ -25,3 +25,7 @@ test('every rule should defined in the index file and recommended settings', asy
 test('no-var should be turned on in the recommended settings', t => {
   t.true(index.configs.recommended.rules['no-var'] === 'error');
 });
+
+test('prefer-spread should be turned on in the recommended settings', t => {
+  t.true(index.configs.recommended.rules['prefer-spread'] === 'error');
+});
