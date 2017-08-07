@@ -129,6 +129,14 @@ To enable this configuration, use the `extends` property in your `package.json`.
 
 See [ESLint documentation](http://eslint.org/docs/user-guide/configuring#extending-configuration-files) for more information about extending configuration files.
 
+## Thanks
+
+* With inspiration and recommended rule-set from:
+  * https://github.com/bodil/eslint-config-cleanjs
+* Code from:
+  * https://github.com/jfmengels/eslint-plugin-fp
+  * https://github.com/imitrieve/eslint-plugin-better
+
 MIT © [Jeroen Engels](https://github.com/jfmengels)
 MIT © [Ivan Dmitriev](https://github.com/idmitriev)
 MIT © [Thomas Grainger](https://github.com/graingert)
