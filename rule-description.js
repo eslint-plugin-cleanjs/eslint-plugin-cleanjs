@@ -1,10 +1,10 @@
 'use strict';
 
-const reqAll = require('req-all');
+const importModules = require('import-modules');
 const createIndex = require('create-eslint-index');
 const index = require('./');
 
-const rules = reqAll('rules', {camelize: false});
+const rules = importModules('rules', {camelize: false});
 
 const settings = {
   descriptionField: 'meta.docs.description',
