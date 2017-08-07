@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "xo && nyc ava",
-    "update-md": "inject-in-tag ./rule-description.js readme.md"
+    "update-md": "inject-in-tag ./rule-description.js README.md"
   },
   "files": [
     "index.js",
