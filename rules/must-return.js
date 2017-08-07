@@ -29,7 +29,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const upperFirst = require('lodash.upperfirst');
+const upperFirst = require('lodash/fp').upperFirst;
 
 const astUtils = require('eslint/lib/ast-utils');
 
