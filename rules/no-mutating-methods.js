@@ -61,7 +61,6 @@ const create = function (context) {
           node,
           message: `The use of method \`${name}\` is not allowed as it might be a mutating method`
         });
-        return;
       }
     }
   };

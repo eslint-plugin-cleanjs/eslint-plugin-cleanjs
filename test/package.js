@@ -19,6 +19,6 @@ test('every rule should defined in the index file and recommended settings', asy
     'There are more exported rules than rule files.');
 });
 
-test('no-var should be turned on in the recommended settings', async t => {
+test('no-var should be turned on in the recommended settings', t => {
   t.true(index.configs.recommended.rules['no-var'] === 'error');
 });

@@ -91,7 +91,8 @@ module.exports = function (context) {
     * @returns {void}
     */
   function checkLastSegment(node) {
-    let loc, name;
+    let loc;
+    let name;
 
       /*
        * Skip if it expected no return value or unreachable.
