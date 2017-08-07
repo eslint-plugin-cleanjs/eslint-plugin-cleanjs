@@ -1,6 +1,7 @@
 import fs from 'fs';
 import test from 'ava';
 import pify from 'pify';
+import _ from 'lodash/fp';
 import index from '../';
 
 test('every rule should defined in the index file and recommended settings', async t => {
@@ -9,9 +10,11 @@ test('every rule should defined in the index file and recommended settings', asy
 
   rules.forEach(file => {
     const name = file.slice(0, -3);
-    t.truthy(index.rules[name], `'${name}' is not exported in 'index.js'`);
-    t.truthy(index.rules[name].meta.docs.description, `'${name}' does not have a description`);
-    t.truthy(index.rules[name].meta.docs.recommended, `'${name}' does not have a recommended setting`);
+    const rule = index.rules[name];
+    const docs = _.getOr({}, ['meta', 'docs'], rule);
+    t.truthy(rule, `'${name}' is not exported in 'index.js'`);
+    t.truthy(docs.description, `'${name}' does not have a description`);
+    t.truthy(docs.recommended, `'${name}' does not have a recommended setting`);
     t.truthy(index.configs.recommended.rules[`fp/${name}`], `'${name}' is not set in the recommended config`);
   });
 
