@@ -1,4 +1,4 @@
-module.exports = function (context) {
+const create = function (context) {
   const functions = [];
   function enterFunction(node) {
     return functions.push(node);
@@ -26,4 +26,15 @@ module.exports = function (context) {
       return functions.pop();
     }
   };
+};
+
+module.exports = {
+  create,
+  meta: {
+    docs: {
+      description:
+        'Stricter version of must-return: every function should have a top level return statement.',
+      recommended: 'off'
+    }
+  }
 };

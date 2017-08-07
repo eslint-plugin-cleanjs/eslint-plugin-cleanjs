@@ -1,4 +1,4 @@
-module.exports = function (context) {
+const create = function (context) {
   return [
     'ExportNamedDeclaration',
     'ExportDefaultDeclaration',
@@ -9,4 +9,14 @@ module.exports = function (context) {
     };
     return acc;
   }, {});
+};
+
+module.exports = {
+  create,
+  meta: {
+    docs: {
+      description: 'Forbids use of export keyword',
+      recommended: 'off'
+    }
+  }
 };

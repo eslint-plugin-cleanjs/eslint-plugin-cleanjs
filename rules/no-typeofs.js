@@ -1,4 +1,4 @@
-module.exports = function (context) {
+const create = function (context) {
   return {
     UnaryExpression(node) {
       return node.operator === 'typeof' ?
@@ -6,4 +6,14 @@ module.exports = function (context) {
         undefined;
     }
   };
+};
+
+module.exports = {
+  create,
+  meta: {
+    docs: {
+      description: 'Forbids the typeof operator',
+      recommended: 'off'
+    }
+  }
 };

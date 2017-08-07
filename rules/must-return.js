@@ -79,7 +79,7 @@ function isSimpleArrow(node) {
 // Rule Definition
 //------------------------------------------------------------------------------
 
-module.exports = function (context) {
+const create = function (context) {
   const treatUndefinedAsUnspecified = false;
   let funcInfo = null;
 
@@ -186,4 +186,14 @@ module.exports = function (context) {
     'FunctionExpression:exit': checkLastSegment,
     'ArrowFunctionExpression:exit': checkLastSegment
   };
+};
+
+module.exports = {
+  create,
+  meta: {
+    docs: {
+      description: 'Every branch of every function should have a return statement.',
+      recommended: 'off'
+    }
+  }
 };

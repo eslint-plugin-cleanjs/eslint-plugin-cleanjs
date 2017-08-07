@@ -110,11 +110,8 @@ Inspired by [this talk](https://www.youtube.com/watch?v=PSGEjv3Tqo0).
 
 | Name  | Description | Default Configuration |
 | ------------- | ------------- | ------------- |
-| no-classes | Forbids use of classes. | 'no-classes': 0 |
-| no-deletes | Forbids use of delete. | 'no-deletes': 2 |
 | no-exceptions | Forbids throwing and catching errors. | 'no-exceptions': 2 |
 | no-exports | Forbids use of export keyword.  | 'no-exports': 0 |
-| no-fors | Forbids use for, for-in, for of statements. | 'no-fors': 2 |
 | no-function-expressions | Forbids use function expressions. | 'no-function-expressions': 0 |
 | no-ifs | Forbids use of if statements. | 'no-ifs': 2 |
 | no-imports | Forbids use of import keyword. | 'no-imports': 0 |
@@ -124,10 +121,9 @@ Inspired by [this talk](https://www.youtube.com/watch?v=PSGEjv3Tqo0).
 | no-reassigns | Forbids reassigning variables. | 'no-reassigns': 2 |
 | no-switches | Forbids use of switch statement. | 'no-switches': 2 |
 | no-this | Forbids use of this. | 'no-this': 2 |
-| no-typeof | Forbids typeof operator. | 'no-typeofs': 2 |
+| no-typeofs | Forbids typeof operator. | 'no-typeofs': 2 |
 | no-undefined | Forbids use of undefined. | 'no-undefined': 0 |
 | no-variable-declaration | Forbids declaring variables. | 'no-variable-declaration': 0 |
-| no-whiles | Forbids use while, do-while statements. | 'no-whiles': 2 |
 | must-return | Every branch of every function should have a return statement. | 'must-return': 2 |
 | explicit-return | Stricter version of must-return: every function should have a top level return statement. | 'explicit-return': 2 |
 

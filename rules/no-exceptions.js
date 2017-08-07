@@ -1,4 +1,4 @@
-module.exports = function (context) {
+const create = function (context) {
   return [
     'ThrowStatement',
     'TryStatement',
@@ -9,4 +9,14 @@ module.exports = function (context) {
     };
     return acc;
   }, {});
+};
+
+module.exports = {
+  create,
+  meta: {
+    docs: {
+      description: 'Forbids throwing and catching errors.',
+      recommended: 'off'
+    }
+  }
 };
