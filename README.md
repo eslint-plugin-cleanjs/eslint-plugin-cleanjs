@@ -135,7 +135,7 @@ See [ESLint documentation](http://eslint.org/docs/user-guide/configuring#extendi
   * https://github.com/bodil/eslint-config-cleanjs
 * Code from:
   * https://github.com/jfmengels/eslint-plugin-fp
-  * https://github.com/imitrieve/eslint-plugin-better
+  * https://github.com/idmitriev/eslint-plugin-better
 
 MIT © [Jeroen Engels](https://github.com/jfmengels)
 MIT © [Ivan Dmitriev](https://github.com/idmitriev)
