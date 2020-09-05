@@ -31,7 +31,7 @@
 
 const upperFirst = require('lodash/fp').upperFirst;
 
-const astUtils = require('eslint/lib/ast-utils');
+const astUtils = require('eslint-utils');
 
 //------------------------------------------------------------------------------
 // Helpers
